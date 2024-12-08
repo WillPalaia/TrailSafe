@@ -56,6 +56,12 @@ export class LoginPageComponent extends BaseComponent {
     logoutBtn.textContent = "Logout";
     container.appendChild(logoutBtn);
 
+    //Google Button
+    const googleBtn = document.createElement("button");
+    googleBtn.id = "googleBtn";
+    googleBtn.textContent = "Login with Google";
+    container.appendChild(googleBtn);
+
     const deleteBtn = document.createElement("button");
     deleteBtn.id = "deleteBtn";
     deleteBtn.textContent = "Delete Account";
@@ -65,9 +71,13 @@ export class LoginPageComponent extends BaseComponent {
     registerBtn.addEventListener('click', () => this.register());
     loginBtn.addEventListener('click', () => this.login());
     logoutBtn.addEventListener('click', () => this.logout());
+    googleBtn.addEventListener('click', () => this.loginGoogle());
     deleteBtn.addEventListener('click', () => this.deleteAccount());
 
-    //TODO: Add Google Login Button
+ 
+
+
+
     //TODO: Add Admin, add forgot password, add delete button?
     //TODO: Add more user feedback for different scenarios, such as username taken. 
 
@@ -90,12 +100,27 @@ export class LoginPageComponent extends BaseComponent {
   }
 
   async login() {
-  //TODO: For Will
+    const username = document.getElementById("username").value;
+        const password = document.getElementById("password").value;
+        const response = await fetch("/login", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ username, password }),
+        });
+        const data = await response.json();
+        console.log(JSON.stringify(data, null, 2));
+        alert(data.message);
   }
   
   async logout() {
-    //TODO: For Will
+    const response = await fetch("/logout");
+        const data = await response.json();
+        console.log(JSON.stringify(data, null, 2));
+        alert(data.message);
   }
+  async loginGoogle() {
+    window.location.href = "/auth/google";
+    }
 
   //Method for account deletion
   async deleteAccount() {

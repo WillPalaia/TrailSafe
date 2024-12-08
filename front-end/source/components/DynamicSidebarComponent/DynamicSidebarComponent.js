@@ -45,7 +45,7 @@ export class DynamicSidebarComponent extends BaseComponent {
     sidebar.appendChild(sidebarItems);
 
     // Define sidebar navigation items
-    const items = ["Home", "Profile", "Friends", "CurrentTrip"];
+    const items = ["Login", "Home", "Profile", "Friends", "CurrentTrip"];
     items.forEach(item => {
       const button = document.createElement("button");
       button.textContent = item;

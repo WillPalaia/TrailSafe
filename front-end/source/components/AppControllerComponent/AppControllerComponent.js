@@ -7,6 +7,7 @@ import { GearRecComponent } from '../GearRecComponent/GearRecComponent.js';
 import { HomeIconComponent } from '../HomeIconComponent/HomeIconComponent.js';
 import { CurrentTripComponent } from '../CurrentTripComponent/CurrentTripComponent.js';
 import { DarkModeToggleComponent } from '../DarkModeToggleComponent/DarkModeToggleComponent.js';
+import {LoginPageComponent} from '../LoginPageComponent/LoginPageComponent.js';
 
 export class AppControllerComponent {
   #container = null;
@@ -73,6 +74,9 @@ export class AppControllerComponent {
 
     let pageComponent;
     switch (page) {
+      case 'Login':
+        pageComponent = new LoginPageComponent();
+        break;
       case 'Home':
         pageComponent = new MainPageComponent();
         break;
